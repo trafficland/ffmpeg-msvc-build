@@ -13,25 +13,32 @@ easily modified to allow different configurations to be built as well.
 ## Requirements
 
 * [NASM](https://www.nasm.us/)
-* [Visual Studio](https://docs.microsoft.com/en-us/cpp/)
 * [MSYS2](https://www.msys2.org/) (needs to be installed at ``C:\msys64\``)
-
-## Usage
+* [Build Tools for Visual Studio] (https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16#) (make sure to check C++ build tools)
+* [Nuget.exe](https://nuget.org/downloads)
+* The following packages installed with msys pacman `pacman -S p7zip diffutils make nasm`
+## Build
 
 Prebuilt static LGPL builds with Visual Studio 2017 (toolset v141) can be found [here](https://github.com/mcmtroffaes/ffmpeg-msvc-build/releases). If you want to build your own version on your local machine, then:
 
-  * Optional: apply ``create-lib-libraries.patch`` (this ensures that
-    the build will produce .lib files instead of .a files).
-  * Ensure nasm is in your path; if not, add it.
-  * Set the following variables:
-      - APPVEYOR_BUILD_FOLDER (should be set to the project folder where ``build.sh`` resides)
-      - TOOLSET (v120, v140, v141)
+  * Checkout the tag for the ffmpeg version you want in the submodule
+    - `git submodule init`
+    - `git submodule update`
+    - `cd ffmpeg`
+    - `git checkout n4.1.3` - replace the tag with whatever release you would like to build
+  * Ensure nasm is in your path; if not, add it see above pacman command.
+  * The following variables will be set in build.bat:
       - PLATFORM (x86, x64)
       - CONFIGURATION (Release, Debug)
       - LINKAGE (shared, static)
       - RUNTIME_LIBRARY (MD, MT)
       - LICENSE (LGPL21, LGPL3, GPL2, GPL3)
   * Start the build script by running ``build.bat``.
+
+## Package
+ * Update FFmpeg.LGPL.x86.nuspec version number to match ffmpeg (git checkout command above). If the license has changed, update that as well.
+ * `nuget.exe pack FFmpeg.LGPL.x86.nuspec`
+ * Upload resulting nupkg to trafficlandit nuget repo
 
 ## License
 

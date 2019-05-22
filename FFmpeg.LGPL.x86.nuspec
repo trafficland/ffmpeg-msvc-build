@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>FFmpeg.LGPL.x86</id>
+    <version>4.1.3-Final</version>
+    <title>FFmpeg LGPL x86</title>
+    <authors>FFmpeg team</authors>
+    <owners>FFmpeg team</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Contains the native binaries of a LGPL build of FFmpeg.</description>
+    <copyright>Copyright 2019</copyright>
+    <tags>FFmpeg LGPL x86</tags>
+    <license type="expression">LGPL-3.0-only</license>
+    <iconUrl>https://ffmpeg.org/favicon.ico</iconUrl>
+  </metadata>
+  <files>
+    <file src="ffmpeg\libavcodec\avcodec-58.dll" target="lib\"  />
+    <file src="ffmpeg\libavdevice\avdevice-58.dll" target="lib\"  />
+    <file src="ffmpeg\libavfilter\avfilter-7.dll" target="lib\"  />
+    <file src="ffmpeg\libavformat\avformat-58.dll" target="lib\"  />
+    <file src="ffmpeg\libavutil\avutil-56.dll" target="lib\"  />
+    <file src="ffmpeg\libswresample\swresample-3.dll" target="lib\"  />
+    <file src="ffmpeg\libswscale\swscale-5.dll" target="lib\"  />
+  </files>
+</package>
