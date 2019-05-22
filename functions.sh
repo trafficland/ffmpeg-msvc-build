@@ -231,7 +231,9 @@ function make_all() {
 	local platform
 	local "${@}"
 	# ensure link.exe is the one from msvc
-	mv /usr/bin/link /usr/bin/link1
+	OLDPATH=$PATH
+	LINKPATH=$(dirname "`which cl`")
+	PATH=$LINKPATH:$PATH
 	which link
 	# ensure cl.exe can be called
 	which cl
@@ -244,5 +246,6 @@ function make_all() {
 	local ffmpeg_prefix=$(readlink -f $ffmpeg_folder)
 	build_ffmpeg prefix=$ffmpeg_prefix license=$license linkage=$linkage runtime=$runtime configuration=$configuration
 	make_zip folder=$ffmpeg_folder
-	mv /usr/bin/link1 /usr/bin/link
+	#remove msvc bin from path - link.exe back to msys
+	PATH=$OLDPATH
 }
